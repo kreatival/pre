@@ -1,0 +1,59 @@
+const fs = require('fs');
+const pg = require('pg');
+const url = require('url');
+
+const config = {
+    user: "avnadmin",
+    password: "<redacted>",
+    host: "pg-308901e1-digitalalbania05-4c61.d.aivencloud.com",
+    port: 13131,
+    database: "defaultdb",
+    ssl: {
+        rejectUnauthorized: true,
+        ca: `-----BEGIN CERTIFICATE-----
+MIIERDCCAqygAwIBAgIUczcmqlSvu0RoPYVJa5HWg7SsrSgwDQYJKoZIhvcNAQEM
+BQAwOjE4MDYGA1UEAwwvMmM3ZmJmMjQtNWVjNi00NDgzLTkxOWItZGE5MTUxMzBh
+YjJkIFByb2plY3QgQ0EwHhcNMjYxMTA2MTMwOTI4WhcNMzYxMTAzMTMwOTI4WjA6
+MTgwNgYDVQQDDC8yYzdmYmYyNC01ZWM2LTQ0ODMtOTE5Yi1kYTkxNTEzMGFiMmQg
+UHJvamVjdCBDQTCCAaIwDQYJKoZIhvcNAQEBBQADggGPADCCAYoCggGBALgsRgxx
+gq7FtNdqPOVz6/hi9UyUxXh+4uvhzeWFhALDzdojgJuSyDQS+W1CYMjYlEo5mWBr
+OmJhtqoqWjgz7lFlfjjoXvLE8OOnybR0ufpoEmoYFRpiM44dO9b8tAViAhfEb2lA
+MsOXY/yKFoxjrxrr8e2TJL2oavAGVH6DZjMlbydFjzU7eIWTUT+DFsIWLTmy2q/E
+aeD5kl8VRHOVXzlReUEt7DqIt5bvxCm0IUUda8fRauKF+E604g+XQrvoik/x0Oxs
+i0m4HI70YecRePGQcN+LzGHyrsRFd4ZC/uyucz+6exE0KLhsb0v6K3Bmhowypzju
+BAXp3zQTyYkeL03KFn2Tk285uMRJjpkEZVgToLwqwAId2Il+3gyBhU2TsoEEVktg
+ZBZQ/zwfcUguhjSMCC1Fd52EKbLzziWO8DXUgb1OB9ZLyp42c77AkiHKdL3fTEkl
+UOyNTYz7PcuJphUzxKdz4R7CP77ZEQkhWT0O7sFnPt7gsi0VSQxMHVMdjwIDAQAB
+o0IwQDAdBgNVHQ4EFgQUYeK3J/qNNCK17sHvfN6CZSVMgIswEgYDVR0TAQH/BAgw
+BgEB/wIBADALBgNVHQ8EBAMCAQYwDQYJKoZIhvcNAQEMBQADggGBAIAPcc5W/W1z
+DhN2uA69WnEEfsXgtLggki4ynX9FBY3II5kFdEwQ98j2feAeR0XmJWcX9mlOq64Y
+IM+rc3j7jDQ204Yl6NRA/SelUCe/uw+nmaKYmvkZ8bYYV5x6mJY/cHmt3L/rfhX0
+p5v3jlo3Erw84b1gN+SYDwpUvcghautDWyDGI+z0MSyr7ENemdZnH2XnR8Gm/H4a
+znnng6+ieGnQrQBGzHwlvUkOajvNKCxWInxoK9cK8RUO6xcqLQwi6ammwKhcIJOL
+KCoe7iOd9gy/u7DKjZuOmNu+Sviezpjn9PQl7RN8hpxfOApdv/9JFksHEf9V+LFz
+EnVkIpZcDq2Hxvkz4lul4JbCwfMiy6VKSwmF+D8c7nLmP6xhOxH5mdNcCelztG7h
+17qhtALRCDckquf3AQsvs9Ylb/U6P9jUjZ0Zq7izNgQ/VAUrdsLBQrqB+kL6a19e
+lHpd01QZuDz9GUcGgh+YXnVh2omQDhr7AxUblGgPtVDmzTPOrdrofQ==
+-----END CERTIFICATE-----`,
+    },
+};
+
+const client = new pg.Client(config);
+client.connect(function (err) {
+    if (err)
+        throw err;
+    client.query("SELECT VERSION()", [], function (err, result) {
+        if (err)
+            throw err;
+
+        console.log(result.rows[0].version);
+        client.end(function (err) {
+            if (err)
+                throw err;
+        });
+    });
+});
+
+
+
+postgres://avnadmin:AVNS_0E_83HeAcCtugEP3usS@pg-308901e1-digitalalbania05-4c61.d.aivencloud.com:13131/defaultdb?sslmode=require

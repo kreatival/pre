@@ -1,0 +1,18 @@
+{
+    "series": [
+        { "code": "S560", "name": "ALUMIL S560", "family": "Sliding system", "types": ["SLIDING"], "defaultLeaves": 2, "defaultMechanism": "GU-BKS" },
+        { "code": "S67", "name": "ALUMIL S67", "family": "Sliding system", "types": ["SLIDING"], "defaultLeaves": 2, "defaultMechanism": "GU-BKS" },
+        { "code": "M11000", "name": "ALUMIL M11000", "family": "Thermal-break window and door system", "types": ["TILT_TURN", "FIXED", "DOOR"], "defaultLeaves": 1, "defaultMechanism": "GU-BKS", "defaultColor": "Bardh- Antracit" },
+        { "code": "PANEL", "name": "PANEL", "family": "Panel entrance door", "types": ["PANEL_DOOR"], "defaultLeaves": 1 }
+    ],
+    "glass": ["Solar 4mm /Float 4mm / Float-e 4mm"],
+    "mechanisms": ["GU-BKS"],
+    "colors": ["Bardh- Antracit", "Bardh", "Antracit"],
+    "itemTypes": [
+        { "value": "SLIDING", "label": "Sliding" },
+        { "value": "TILT_TURN", "label": "Tilt and turn window" },
+        { "value": "FIXED", "label": "Fixed" },
+        { "value": "DOOR", "label": "Door" },
+        { "value": "PANEL_DOOR", "label": "Panel door" }
+    ]
+}

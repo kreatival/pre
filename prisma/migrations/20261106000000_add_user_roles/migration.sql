@@ -1,0 +1,4 @@
+-- Add the new RBAC roles while keeping the legacy ADMIN alias for compatibility
+ALTER TYPE "Role" ADD VALUE IF NOT EXISTS 'SUPERADMIN';
+ALTER TYPE "Role" ADD VALUE IF NOT EXISTS 'WORKSHOP_ADMIN';
+ALTER TYPE "Role" ADD VALUE IF NOT EXISTS 'OPERATOR';
